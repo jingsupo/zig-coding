@@ -13,8 +13,8 @@ int fetch(const char *key, uintptr_t *value) {
   return 1;
 }
 
-// cannot name main() when runnign Zig tests
-int main2() {
+// cannot name main() when running Zig tests
+int _main() {
   static char *s;
   store("foo", (const uintptr_t) "goodbye");
   fetch("foo", (uintptr_t *) &s);

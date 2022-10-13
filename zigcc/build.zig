@@ -10,28 +10,28 @@ pub fn build(b: *std.build.Builder) void {
     exe.setBuildMode(.ReleaseSafe);
     exe.setTarget(target);
     // c lib path
-    // exe.addIncludePath(".");
+    // exe.addIncludePath("c");
     exe.install();
 
     const main = b.addStaticLibrary("main", "src/main.zig");
     main.setBuildMode(.ReleaseSafe);
     // c lib path
-    // main.addIncludePath(".");
+    // main.addIncludePath("c");
     main.install();
 
     const storage = b.addStaticLibrary("storage", "src/storage.zig");
     storage.setBuildMode(mode);
     // c lib path
-    // storage.addIncludePath(".");
+    // storage.addIncludePath("c");
     storage.install();
 
     const main_tests = b.addTest("src/main.zig");
     // c lib path
-    main_tests.addIncludePath(".");
+    main_tests.addIncludePath("c");
 
     const storage_tests = b.addTest("src/storage.zig");
     // c lib path
-    storage_tests.addIncludePath(".");
+    storage_tests.addIncludePath("c");
     // link libc
     storage_tests.linkLibC();
 
