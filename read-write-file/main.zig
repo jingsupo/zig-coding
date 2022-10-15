@@ -34,12 +34,12 @@ pub fn main() !void {
     var fbs = std.io.fixedBufferStream(buf);
     const reader = fbs.reader();
 
-    var i: i32 = 0;
-    while (true) {
+    var i: usize = 0;
+    while (true) : (i += 1) {
         var line = reader.readUntilDelimiter(buf, '\n') catch break;
         _ = try out_file.write(line);
         _ = try out_file.write("\n");
-        i += 1;
+
         if (@mod(i, 10_0000) == 0) {
             print("{}\n", .{i});
         }
