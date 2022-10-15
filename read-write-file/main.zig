@@ -13,8 +13,7 @@ pub fn main() !void {
 
     const cwd = std.fs.cwd(); //不能在函数最外层声明，否则报错
 
-    // const in_file = try cwd.openFile("tmp.txt", .{ .mode = .read_only });
-    const in_file = try cwd.createFile(file_path, .{ .read = true, .truncate = false });
+    const in_file = try cwd.openFile(file_path, .{ .mode = .read_only });
     defer in_file.close();
     const out_file = try cwd.createFile(out_path, .{ .read = true, .truncate = false });
     defer out_file.close();
