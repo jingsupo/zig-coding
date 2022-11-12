@@ -7,6 +7,8 @@ const allocator = std.heap.page_allocator;
 
 const SearchContinuousRegions = struct {
     arr: [][]usize,
+    // 如果elem不使用指针类型，则报以下错误：
+    // error: expected type '*array_list.ArrayListAligned([]usize,null)', found '*const array_list.ArrayListAligned([]usize,null)'
     elem: *std.ArrayList([]usize),
     rows: usize = 0,
     cols: usize = 0,
